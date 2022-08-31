@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/header.css"%}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class = "navbar">
+
+        <a id="navtext" href="{% url "index" %}">Inicio</a>
+        <a id="navtext" href="{% url "web_app:other" %}">Otros</a>
+        <a id="navtext" href="{% url "web_app:relative" %}">Indice </a>
+        <a id="navtext" href="{% url "admin:index" %}">Admin</a>
+        <a id="navtext" href="{% url "web_app:register" %}">Register</a>
+
+        {% if user.is_authenticated %}
+        <a id="navtext" href="{% url "logout" %}">Log out</a>
+        {% else %}
+        <a id="navtext_login" href="{% url "web_app:user_login" %}">Login</a>
+        {% endif %}
+
+    </div>
+
+    {% block body_block %}
+    {% endblock body_block %}
+
+</body>
+</html>
